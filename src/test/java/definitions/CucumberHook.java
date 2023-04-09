@@ -16,7 +16,7 @@ public class CucumberHook {
 
         try{
 
-            DriverContext.setUp(Navegador.Chrome, LugarEjecucion.Local, TipoEjecucion.Desktop, "Prueba ");
+            DriverContext.setUp(Navegador.Chrome, LugarEjecucion.Local, TipoEjecucion.Desktop, "Prueba");
 
         }catch (Exception e){
             Assert.fail("Error en la configuración del proyecto");
@@ -29,7 +29,7 @@ public class CucumberHook {
     @After
     public void after(){
         try{
-            DriverContext.quitDriver();
+            //DriverContext.quitDriver();
         }catch(Exception e){
             System.out.println(e);
 

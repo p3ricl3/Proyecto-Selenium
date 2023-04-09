@@ -3,8 +3,6 @@ package driver;
 import constants.LugarEjecucion;
 import constants.Navegador;
 import constants.TipoEjecucion;
-import org.openqa.selenium.JavascriptException;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -33,13 +31,21 @@ public class DriverManager {
                 case Desktop:
                     switch (lugar) {
                         case Local:
-                            remoto = false;
                             switch (nav) {
                                 case Chrome:
                                     System.out.println("\nEjecucion con Chrome!\n ");
-                                    System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/Webdiver/chrome/chromedriver");
+                                    //System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/Webdiver/chrome/chromedriver");
+
+                                    //System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/usr/local/bin/chromedriver");
+
+                                   System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+
+                                    //System.setProperty("webdriver.chrome.driver", "/Users/macbookpror9/IdeaProjects/ProyectoSeleniumWebDriver/Webdiver/chrome/chromedriver");
+                                    //WebDriver driver = new ChromeDriver();
+                                    //driver.manage().window().maximize();
                                     ChromeOptions chromeOptions = new ChromeOptions();
-                                    chromeOptions.addArguments("--ignore-certificate-errors");
+                                    chromeOptions.addArguments("--remote-allow-origins=*");
+                                    //chromeOptions.addArguments("--ignore-certificate-errors");
                                     driverLocal = new ChromeDriver(chromeOptions);
                                     break;
 
@@ -60,6 +66,7 @@ public class DriverManager {
 
                             }
                             driverLocal.manage().window().maximize();
+                            break;
 
                     }
 
